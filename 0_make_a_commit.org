@@ -1,0 +1,302 @@
+#+TITLE: Git Workshop
+#+SUBTITLE: Make a Git Commit
+#+DATE: 2015/01/18（日）02:20
+#+AUTHOR: Jian Min Huang
+#+EMAIL: hello@world
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:nil p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+CREATOR: Emacs 24.4.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+* Goal
+
+Use git on your local machine
+
+#+ATTR_HTML: :class build
+- Make a git commit
+
+* Initial Setting
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Tell Git who use it 
+
+#+BEGIN_SRC sh
+$ git config --global user.name hello
+$ git config --global user.email hello@example.com
+
+$ cat ~/.gitconfig
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+--globla <-> $HOME/.gitconf
+#+END_EXAMPLE
+
+- user name
+- user email
+
+#+BEGIN_SRC sh
+$ git config --list
+#+END_SRC
+
+* Get a git repository
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** OutLine
+- Create a new git repo
+- Get from existing git repo
+
+** Create a new git repo
+
+#+BEGIN_SRC sh
+$ cd /path/to/dir/you/want/git/record/history
+$ git init .
+#+END_SRC
+
+.git directory 
+
+#+BEGIN_EXAMPLE
+$ ls .git
+COMMIT_EDITMSG  config  description  FETCH_HEAD
+HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs
+#+END_EXAMPLE
+
+** From others
+
+#+BEGIN_EXAMPLE
+$ git clone
+#+END_EXAMPLE
+
+- Local
+- HTTP/HTTPS
+- SSH
+
+#+BEGIN_SRC sh
+$ git clone /opt/git/project.git
+
+$ git clone https://example.com/gitproject.git
+
+$ git clone user@server:project.git
+#+END_SRC
+
+* Git Repo Status
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** OutLine
+- CLI
+  + git status
+  + git log 
+
+- GUI 
+  + git gui
+  + gitk --all
+
+** Git repo status - CLI
+
+Working directory status
+
+#+BEGIN_SRC sh
+  $ git status
+#+END_SRC
+
+Git History
+
+#+BEGIN_SRC sh
+  $ git log
+#+END_SRC
+
+** Git repo status - GUI
+Working directory status
+
+#+BEGIN_SRC sh
+  $ git gui
+#+END_SRC
+
+Git History
+
+#+BEGIN_SRC sh
+  $ gitk --all
+#+END_SRC
+
+* Make a git commit
+
+All you need to know
+
++ git status
+  - git diff HEAD
+  - git diff --staged
+  - git diff
+
++ git add (for untracked files)
+
++ git gui or git add -p
+ 
++ gitk --all
+
+Tip
+
+#+BEGIN_EXAMPLE
+git diff
+git difftool -t vimdiff
+#+END_EXAMPLE
+
+* git status example
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** git status
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+
+- Changes to be committed
+- Changes not staged for commit
+- Untracked files
+ 
+For untracked files,
+you can use git add to tell git to tarck it.
+
+For other cases, you can use git gui.
+
+#+BEGIN_EXAMPLE
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   README.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md
+        modified:   main.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Makefile
+#+END_EXAMPLE
+
+** git diff
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+
+#+BEGIN_SRC sh
+$ git diff HEAD
+# Changes in the working directory since your last commit
+
+$ git diff
+# Changes in the working tree not yet staged for the next commit
+
+$ git diff --staged
+# Changes staged for a commit
+#+END_SRC
+
+You can use git gui to control what you will see!
+
+#+BEGIN_SRC sh
+$ git gui
+#+END_SRC
+
+It helps you make [[http://seesparkbox.com/foundry/atomic_commits_with_git][atomic commit]].
+ - Clean History
+ - Code Reviews are Easier
+ - Eaiser to Roll Back
+
+Make beautiful commits
+Write beautiful commit messages
+
+** git diff with vimdiff, meld
+
+#+BEGIN_SRC sh
+$ git difftool -t vimdiff HEAD
+# Changes in the working directory since your last commit
+
+$ git difftool -t vimdiff
+# Changes in the working tree not yet staged for the next commit
+
+$ git difftool -t vimdiff
+# Changes staged for a commit
+#+END_SRC
+
+** What we learn? bracnh, commit id
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+
+- branch
+- commit, commit id
+
+#+BEGIN_SRC sh
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+...
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+git branch
+
+git log
+
+gitk
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+commit id example
+101b7a02b89abdf95b0cead59fba65147c5e69ef
+#+END_EXAMPLE
+
+* Good Practice
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Before you commit
+
+Changes that will go to next commit
+
+#+BEGIN_SRC sh
+$ git diff --staged
+# Changes staged for a commit
+
+or
+$ git gui
+#+END_SRC
+
+Changes you make in working direcotry but not go to next commit
+
+#+BEGIN_SRC sh
+$ git diff
+#+END_SRC
+
+Use git gui (git add -p) to
+put the changes in git diff to staged area.
+
+* Next
+
++ Play with git branch
++ Use git to collaborate with others
+ 
+
+
