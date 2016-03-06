@@ -1,0 +1,170 @@
+#+TITLE: Git Workshop
+#+SUBTITLE: Manage Branch
+#+DATE: 2015/01/18（日）02:20
+#+AUTHOR: Jian Min Huang
+#+EMAIL: hello@world
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:nil p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+CREATOR: Emacs 24.4.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+* Goal
+
++ Use git on your local machine
+ - Make a git commit
+ - play with git branch
+
+* OutLine
+
+View branch status
+- Create branch
+- Switch branch
+
+Integrate branch
+- merge branch 
+- rebase branch
+- cherry-pick
+
+* The current branch
+
+- (1) Show the current branch
+
+#+BEGIN_EXAMPLE
+$ git branch
+*master
+develop
+#+END_EXAMPLE
+
+- (2) Show the current branch
+
+#+BEGIN_EXAMPLE
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+...
+#+END_EXAMPLE
+
+- (3) gitk, or gitk --all
+
+* Local developemnt in a single branch
+
+CLI
+
+- git status
+  + git diff HEAD, git diff, git diff --staged
+- git add (-p)
+- git commit
+
+GUI
+
+- gitk --all
+- git gui
+
+* Local development with branch
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** Manage your branch
+
+View branch status
+- create branch
+- switch branch
+
+Integrate branch
+- merge branch 
+- rebase branch
+- cherry-pick
+
+** Show branch
+
+#+BEGIN_SRC sh
+git branch # local branch
+#+END_SRC
+
+#+BEGIN_SRC sh
+git branch -r # remote branch
+git branch -a # local + remote
+git branch -vv # branch, tracking branch
+#+END_SRC
+
+** working direcotry clean
+
+#+BEGIN_EXAMPLE
+$ git status
+On branch master
+nothing to commit, working directory clean
+#+END_EXAMPLE
+
+#+BEGIN_SRC sh
+$ git diff HEAD
+$ git diff
+$ git diff --staged
+#+END_SRC
+
+git stash make your working directory clean 
+
+#+BEGIN_SRC sh
+$ git stash
+$ git status
+#+END_SRC
+
+** Switch branch
+
+#+BEGIN_SRC sh
+git checkout <branch_name>
+#+END_SRC
+
+It's best to
+have a clean working state when you switch branches.
+
+# https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging search best
+# https://git-scm.com/book/zh-tw/v2/Git-Tools-Stashing-and-Cleaning
+
+#+BEGIN_EXAMPLE
+$ git status
+On branch master
+nothing to commit, working directory clean
+#+END_EXAMPLE
+
+** Create branch
+
+#+BEGIN_SRC sh
+git branch <branch_name>
+#+END_SRC
+
+The above command *only* creates a new branch
+based on the current branch.
+
+You are not in that new branch.
+
+Remove branch
+
+#+BEGIN_SRC sh
+git branch -d <branch_name>
+#+END_SRC
+
+** Merge, Rebase, Cherry pick
+** Gitk branch 
+
+GUI
+#+BEGIN_SRC sh
+$ gitk --all
+#+END_SRC
+
+- Create a new branch
+- Switch branch
+- Delete branch
+- ...
+
+* Next
+
++ Use git to collaborate with others
