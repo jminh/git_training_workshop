@@ -1,0 +1,99 @@
+#+TITLE: Git Workshop
+#+SUBTITLE: remote, push, pull
+#+DATE: 2016/06/20（日）20:20
+#+AUTHOR: Jian Min Huang
+#+EMAIL: hello@world
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:nil p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+CREATOR: Emacs 24.4.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+* Goal
+
++ Use git to collaborate with remotes/others
+
+* OutLine
+
+- git clone
+- git remote
+- git pull
+- git push
+
+* clone
+
+#+BEGIN_EXAMPLE
+git clone <path/to/git/reop>
+#+END_EXAMPLE
+  
+* remote
+
+** remote status
+
+#+BEGIN_SRC sh
+git remote
+git remote -v
+#+END_SRC
+
+origin is the default remote when you clone a git repository.
+
+Detail remote information
+
+#+BEGIN_EXAMPLE
+git remote show <remote_name>
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+git remote show origin
+#+END_EXAMPLE
+
+** update remote
+
+Update remote's history
+
+#+BEGIN_SRC sh
+git remote update
+#+END_SRC
+
+** add remote
+
+#+BEGIN_EXAMPLE
+git remote add <alias> <path/to/git/repo>
+#+END_EXAMPLE   
+
+#+BEGIN_EXAMPLE
+git remote add ue viewuser99@rdlinux:/home/viewuser99/ue.git
+#+END_EXAMPLE
+
+* pull
+
+ #+BEGIN_SRC sh
+git remote update
+
+git pull
+ #+END_SRC 
+
+More specifically
+
+#+BEGIN_SRC sh
+# git pull <remote> <barnch>
+git pull origin master
+#+END_SRC
+
+* push
+
+#+BEGIN_SRC sh
+git push
+#+END_SRC
+
+More specifically
+
+#+BEGIN_SRC sh
+# git push origin master
+git push origin master
+#+END_SRC
