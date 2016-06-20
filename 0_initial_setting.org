@@ -1,0 +1,41 @@
+#+TITLE: Git Workshop
+#+SUBTITLE: Initial Setting
+#+DATE: 2016/06/20（日）08:26
+#+AUTHOR: Jian Min Huang
+#+EMAIL: hello@world
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:nil p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+CREATOR: Emacs 24.4.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+* Initial Setting
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Tell Git who use it 
+
+#+BEGIN_SRC sh
+$ git config --global user.name hello
+$ git config --global user.email hello@example.com
+
+$ cat ~/.gitconfig
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+--globla <-> $HOME/.gitconf
+#+END_EXAMPLE
+
+- user name
+- user email
+
+#+BEGIN_SRC sh
+$ git config --list
+#+END_SRC
