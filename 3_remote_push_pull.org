@@ -70,6 +70,21 @@ git remote add <alias> <path/to/git/repo>
 git remote add ue viewuser99@rdlinux:/home/viewuser99/ue.git
 #+END_EXAMPLE
 
+
+* diff remote
+
+Compare local branch with remote branch
+
+#+BEGIN_SRC sh
+# What will be pushed to remote repo
+git diff <remote>/<remote branch> <local branch>
+#+END_SRC
+
+#+BEGIN_SRC sh
+# what is going to be added when pull
+git diff <local branch> <remote>/<remote branch>
+#+END_SRC
+
 * pull
 
  #+BEGIN_SRC sh
@@ -96,4 +111,64 @@ More specifically
 #+BEGIN_SRC sh
 # git push origin master
 git push origin master
+#+END_SRC
+
+
+* Tracking Branches
+
+Show tracking branches
+
+#+BEGIN_SRC sh
+git branch -vv
+#+END_SRC
+
+Tracking branch is
+a branch which knows which remote branch it is related to.
+
+You can use
+git push or
+git pull without specifying remote or branch
+for trakcing branch.
+
+** Remove tracking relation
+
+Remove a current tracking relationship
+
+#+BEGIN_SRC sh
+git branch --unset-upstream
+#+END_SRC
+
+** Link a branch to an remote branch
+
+*** Pushing a branch
+
+Pushing a branch (even if it exists in both places)
+to a remote location and creating the link
+
+#+BEGIN_SRC sh
+$ git push -u origin feature
+#+END_SRC
+
+*** Creating a local version of an existing remote branch
+
+#+BEGIN_EXAMPLE
+$ git fetch origin
+remote: Counting objects: 10, done.
+...
+ * [new branch]      feature    -> origin/feature
+
+$ git checkout feature
+#+END_EXAMPLE
+
+Longer version
+
+#+BEGIN_SRC sh
+git branch --track feature origin/feature
+git checkout feature
+#+END_SRC
+
+There is an --no-track option for not tracking remote branch.
+
+#+BEGIN_SRC sh
+git branch --no-track feature origin/feature
 #+END_SRC
