@@ -21,32 +21,6 @@ Use git on your local machine
 #+ATTR_HTML: :class build
 - Make a git commit
 
-* Initial Setting
-  :PROPERTIES:
-  :SLIDE:    segue dark quote
-  :ASIDE:    right bottom
-  :ARTICLE:  flexbox vleft auto-fadein
-  :END:
-** Tell Git who use it 
-
-#+BEGIN_SRC sh
-$ git config --global user.name hello
-$ git config --global user.email hello@example.com
-
-$ cat ~/.gitconfig
-#+END_SRC
-
-#+BEGIN_EXAMPLE
---globla <-> $HOME/.gitconf
-#+END_EXAMPLE
-
-- user name
-- user email
-
-#+BEGIN_SRC sh
-$ git config --list
-#+END_SRC
-
 * Get a git repository
   :PROPERTIES:
   :SLIDE:    segue dark quote
