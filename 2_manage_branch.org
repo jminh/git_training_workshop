@@ -153,6 +153,11 @@ git branch -d <branch_name>
 #+END_SRC
 
 ** Merge, Rebase, Cherry pick
+
+[[https://github.com/geeeeeeeeek/git-recipes/blob/master/sources/代码合并Merge还是Rebase.md][Merge Rebase]]
+
+[[http://learngitbranching.js.org][Learn Git Branching]]
+
 ** Gitk branch 
 
 GUI
